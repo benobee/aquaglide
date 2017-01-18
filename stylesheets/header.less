@@ -1,0 +1,41 @@
+/**
+ *
+ * @description global page header
+ *
+ */
+
+.mobile-bar-wrapper{
+	.mobile-branding-wrapper{
+		transition:opacity 0.4s;
+		&.active-scrolling{
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+}
+
+#secondaryNavWrapper{
+	display:flex;
+	display:-webkit-flex;
+	transition:opacity 0.4s;
+	&.cart-open{
+		opacity:0;
+	}
+	.social-top-nav{
+		@media screen and (max-width:1024px){
+			display: none;
+		}
+		margin-left:1em;
+		.sqs-svg-icon--list{
+			display: flex;
+		}
+	}
+}
+
+.Cart{
+	cursor:pointer;
+}
+
+.cart-wrapper{
+  display:none;
+}
