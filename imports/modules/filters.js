@@ -94,16 +94,12 @@ const filters = {
         });
     },
     checkHash(){
-        let hash = window.location.hash;
+        let filter = window.location.hash;
 
-        if(hash.length == 0){
-            return false;
-        }
+        filter = this.formatHash(filter);
 
-        hash = this.formatHash(hash);
-
-        this.makeButtonActive('.' + hash);
-        this.filterByCategory('tag-' + hash);
+        this.makeButtonActive('.' + filter);
+        this.filterByCategory('tag-' + filter);
     },
     formatHash(hash){
         hash = this.slugify(hash);
@@ -134,9 +130,15 @@ const filters = {
         $(this.grid).addClass('is-initialized');
     },
     events(){
+        window.onhashchange = null;
+
+        $(window).on("hashchange", (e) => {
+            e.preventDefault();
+        });
+
         //click filter button
         $('.category-select').on("click", (e) => {
-            e.preventDefault();
+            //e.preventDefault();
 
             $('.category-select-wrapper .nav-item').removeClass('active');
 
@@ -149,8 +151,8 @@ const filters = {
 
             //change hash
             filter = filter.replace('tag-', '');
-            window.location.hash = filter;
 
+            location.hash = filter;
         });
     }
 };

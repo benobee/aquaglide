@@ -32,7 +32,7 @@ const navbar = {
 
 	},
 	injectSocialIcons(){
-		const socialIcons = $('.socialaccountlinks-v2-block .sqs-block-content').clone();
+		const socialIcons = $('#footer-blocks .socialaccountlinks-v2-block .sqs-block-content').clone();
 
 		const nav = $('#secondaryNavWrapper');
 

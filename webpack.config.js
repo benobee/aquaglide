@@ -4,7 +4,7 @@ const PROD = JSON.parse(process.env.PROD_ENV || '1');
 
 const config = {
 	context: __dirname,
-	entry: PROD ? ['./main.js', './main.less'] : ['./main.js', './main.less', 'webpack-dev-server/client?http://localhost:8080'],
+	entry: PROD ? ['./main.js', './main.less'] : ['./main.js', './main.less'],
 	devtool: PROD ? '' : 'eval',
 	output: {
 		publicPath: '/',
@@ -46,7 +46,7 @@ const config = {
     		{ test: /\.json$/, loader: "json-loader"} 		
   		]
 	},
-	plugins: PROD ? [
+	plugins: [
 	  new webpack.DefinePlugin({
 		  'process.env': {
 		    NODE_ENV: JSON.stringify('production')
@@ -59,7 +59,7 @@ const config = {
 	    output: {
     		comments: false
   		},
-  		minimize: true,
+  		minimize: false,
   		debug: true,
   		sourceMap: true
 	  }),
@@ -68,8 +68,7 @@ const config = {
       	  $: "jquery",
       	  jQuery: "jquery",
       	  "window.jQuery": "jquery"
-      })
-	] : [
+      }),
 	  new webpack.ProvidePlugin({
 	      'Promise': 'es6-promise', 
 	      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'

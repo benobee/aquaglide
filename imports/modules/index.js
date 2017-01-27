@@ -12,6 +12,7 @@ import Events from "./pubsub.js";
 import filters from "./filters.js";
 import cart from "./cart.js";
 import navbar from "./navbar.js";
+import geo from "./geo_plugin.js";
 
 export {
 	animation,
@@ -19,5 +20,6 @@ export {
 	Events,
 	filters,
 	cart,
-	navbar
+	navbar,
+	geo
 }

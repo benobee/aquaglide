@@ -103,12 +103,12 @@ const product = {
 
         $(owl).owlCarousel({
             items: 6,
-            autoplay: true,
+            autoplay: false,
             loop: false,
             margin:0,
             stagePadding:0,
-            rewind:true,
-            slideBy:3,
+            rewind:false,
+            slideBy:1,
             autoplayHoverPause:true,
             mouseDrag: true,
             autoplayTimeout:4000,

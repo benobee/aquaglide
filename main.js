@@ -27,6 +27,7 @@ class App_Build {
             core.product.init();
             core.filters.init();
             core.cart.init();
+            core.geo.init();
         });
     }
 };
