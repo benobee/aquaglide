@@ -14,6 +14,7 @@ const navbar = {
 		this.hideMobileBrandOnScroll();
 	},
 	hideMobileBrandOnScroll(){
+		/* hide the logo when on mobile when not at the top */
 		const brand = $('.mobile-branding-wrapper');
 
 		if(brand.length == 0){
@@ -32,6 +33,7 @@ const navbar = {
 
 	},
 	injectSocialIcons(){
+		/* look for social icons in footer and append into main nav */
 		const socialIcons = $('#footer-blocks .socialaccountlinks-v2-block .sqs-block-content').clone();
 
 		const nav = $('#secondaryNavWrapper');

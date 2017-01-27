@@ -19,12 +19,14 @@ const product = {
 
     },
     toggleMedia(){
+        /* media toggle between 2D and 3D */
         $('.Product').find('.media-toggle .ui').on("click", (e) => {
             $(e.currentTarget).toggleClass("active");
             $('.media-wrapper .slide').toggleClass("active");
         });
     },
     rotateBannerImages(){
+        /* rotate product banner images*/
         const owl = $('#product-banner-images');
         
         owl.length > 1 ? true : false;
@@ -40,6 +42,7 @@ const product = {
         });
     },
     productCarousel() {
+        /* main product image carousel */
         const owl = $('#product-images');
 
         owl.length !== 0 ? true : false;
@@ -90,6 +93,7 @@ const product = {
         });
   },
   thumbCarousel(imageCount){
+    /* product thumb image carousel options */
         let isActive = false;
 
         if(imageCount <= 6){
@@ -152,6 +156,9 @@ const product = {
 
   },
   limitArray(){
+    /* limit the related products merged array to 7
+        for consistency
+    */
     const target = $('.related-products');
 
     let array = $('.item.related').toArray();
@@ -169,7 +176,7 @@ const product = {
       return number * 100;
   },
   focalPoints(){
-
+    /* set user defined focal points from SQS editor*/
     let array = $('.owl-carousel .image').toArray();
 
     $.each(array, (i, item) => {

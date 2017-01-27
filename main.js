@@ -17,11 +17,11 @@ class App_Build {
     	this.runModules();
     }
     runModules(){
-        /*wait for window to load*/
+        /* wait for window to load */
         $(window).on("load", (e) => {
             core.animation.init();
         });
-        /*wait until document is ready*/
+        /* wait until document is ready */
         $(document).ready(() => {
             core.navbar.init();
             core.product.init();

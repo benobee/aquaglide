@@ -15,7 +15,7 @@ const animation = {
 		this.events();
 	},
 	add(){
-	    /*  */
+	    /* loader screen on home page */
 	    setTimeout(function(){
 	        $('.loaderWrapper').addClass("hide");
 	    }, 150);
