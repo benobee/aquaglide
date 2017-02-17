@@ -16,7 +16,7 @@ const animation = {
 	},
 	add(){
 	    /* loader screen on home page */
-	    setTimeout(function(){
+	    setTimeout(() => {
 	        $('.loaderWrapper').addClass("hide");
 	    }, 150);
 
@@ -25,9 +25,8 @@ const animation = {
     },
     events(){
     	/*click on homepage SEE Products*/
-    	$('.page-description a').on("click", (e) =>{
+    	$('.page-description a').on("click", (e) => {
     		e.preventDefault();
-    		console.log(e.currentTarget);
 
 	        let target = $('#collection-header-58791853d1758edfdf7e5ec2');
 

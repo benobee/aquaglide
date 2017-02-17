@@ -14,7 +14,6 @@ const product = {
         this.focalPoints();
         this.rotateBannerImages();
         this.productCarousel();
-        this.relatedProducts();
         this.toggleMedia();
 
     },
@@ -135,42 +134,6 @@ const product = {
                 });
             }
         });
-  },
-  relatedProducts() {
-    //hiding same
-    const id = $('.Product').data('item-id');
-
-    $('.related-products .item[data-item-id="'+ id +'"]').hide();
-
-    //remove duplicates
-    var seen = {};
-    $('.related-products .item').each(function() {
-        var txt = $(this).text();
-        if (seen[txt])
-            $(this).remove();
-        else
-            seen[txt] = true;
-    });
-
-    this.limitArray();
-
-  },
-  limitArray(){
-    /* limit the related products merged array to 7
-        for consistency
-    */
-    const target = $('.related-products');
-
-    let array = $('.item.related').toArray();
-
-    array = array.slice(0,7);
-
-    $('.related-products').html('');
-
-    $.each(array, (index, item) => {
-        $(target).append(item);
-    });
-
   },
   convertToPercent(number){
       return number * 100;

@@ -21,6 +21,9 @@ const filters = {
         this.cacheDOM();
 
         //grid rendering
+        this.mapArray();
+        this.checkHash();
+        this.clearRenderTargetArea();
         this.render();
 
         //bind events
@@ -28,29 +31,20 @@ const filters = {
 
     },
     cacheDOM(){
+
+        /* 
+         * @desc cache product list
+        */
+       
         this.grid = $('.Product-list');
         this.items = $(this.grid).find('.item').toArray();
     },
-    getTags(array){
-        let tags = [];
-
-        _.each(array, (item, index) => {
-            let tag = $(item).data('tag');
-            //get tags and push to array
-            tag = tag.replace(/\./g, "").replace(/-/g, " ").split(',');
-
-            _.each(tag, (i) => {
-                tags.push(i);
-            });
-
-        });
-
-        tags = _.sortBy(tags);
-        tags = _.uniq(tags, true);
-
-        return tags;
-    },
     mapArray(){
+
+        /* 
+         * @desc sortable array options
+        */
+       
         let array = this.items.map((i, id) => {
             const item = {
                 name: $(i).data('name'),
@@ -65,6 +59,11 @@ const filters = {
         this.items = array;
     },
     sortByName(array){
+
+        /* 
+         * @desc sort array by name
+        */
+       
         array.sort((a, b) => {
             if(a.name < b.name) return -1;
             if(a.name > b.name) return 1;
@@ -72,16 +71,12 @@ const filters = {
         });
         return array;
     },
-    renderTags(){
-        this.tags = this.getTags(this.items);
-
-        $.each(this.tags, (i) => {
-            let filter = this.tags[i].replace(/ /g, "-");
-
-            $('#tag-render').append('<div class="category-select '+ filter +'" data-filter="tag-'+ filter +'">' + this.tags[i] + '</div>');
-        });
-    },
     filterByCategory(filterName){
+
+        /* 
+         * @desc sort array by specified filter
+        */
+       
         //clear all active filters
         $('.Product-list .item').removeClass('active-filter');
 
@@ -94,6 +89,12 @@ const filters = {
         });
     },
     checkHash(){
+
+        /* 
+         * @desc look at the hash on page load
+         * and filter results accordingly
+        */
+       
         let filter = window.location.hash;
 
         filter = this.formatHash(filter);
@@ -102,26 +103,47 @@ const filters = {
         this.filterByCategory('tag-' + filter);
     },
     formatHash(hash){
+
+        /* 
+         * @desc change hash to slug
+        */
+       
         hash = this.slugify(hash);
 
         return hash.replace('#', '');
     },
     makeButtonActive(hash){
+
+        /* 
+         * @desc add active state to button
+        */
+       
         let target = $('.category-select-wrapper').find(hash);
 
         $(target[0]).addClass('active');
     },
-    slugify: function(filterName){
+    slugify(filterName){
+
+        /* 
+         * @desc slugify a string
+        */
+       
         return filterName.toLowerCase().replace(/ /g, "-").replace(/-&-/g, "-");
     },
     clearRenderTargetArea(){
+
+        /* 
+         * @desc clear rendered grid
+        */
+       
         $(this.grid).html('');
     },
     render(){
-        this.mapArray();
-        this.checkHash();
-        this.clearRenderTargetArea();
 
+        /* 
+         * @desc render items
+        */
+       
         $.each(this.items, (i) => {
             $(this.grid).append(this.items[i].dom);
         });
@@ -130,6 +152,10 @@ const filters = {
         $(this.grid).addClass('is-initialized');
     },
     events(){
+        /* 
+         * @desc event handelers
+        */
+       
         window.onhashchange = null;
 
         $(window).on("hashchange", (e) => {
@@ -138,8 +164,6 @@ const filters = {
 
         //click filter button
         $('.category-select').on("click", (e) => {
-            //e.preventDefault();
-
             $('.category-select-wrapper .nav-item').removeClass('active');
 
             $(e.currentTarget).addClass('active');

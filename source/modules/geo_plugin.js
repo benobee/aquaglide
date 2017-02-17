@@ -11,29 +11,20 @@ const Geo = {
 	init(){
 		this.geoQuery();
 
-		/*get state of element*/
-		this.isActive();
+		const productPage = this.checkProductPage();
 
 		/* if DOM element is on page run scripts*/
-		if(!this.state){
-			return false;
+		if (productPage) {
+			this.cacheDOM();
 		}
 
-		this.cacheDOM();
-		
-		console.log(this);
 	},
-	isActive(){
+	checkProductPage() {
+		const productPage = $('.Product');
 
-		/*
-		 * @desc check to see if DOM element is on page
-		*/ 
-
-		let productPage = $('.Product');
-
-		let isActive = productPage.length ? true : false;
-
-		this.state = isActive;
+		if (productPage.length > 0) {
+			return true;
+		}
 	},
 	geoQuery(){
 
@@ -52,18 +43,20 @@ const Geo = {
 					case "CA": marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6"; break;
 					default: marketplace = '';
 				}
+				
+				const productPage = this.checkProductPage();
 
 				this.query = data.country;
-
-				/* check if approved country */
-				if(this.state) {
-					this.checkCountryCode(data.country);	
+				
+				if (productPage) {
+					this.checkCountryCode(this.query);
 				}
 
 				if (marketplace.length > 0) {
-
-					$(this.actions[0]).addClass('active-marketplace').attr('data-marketplace', marketplace);
-
+					if (productPage) {
+						$(this.actions[0]).addClass('active-marketplace').attr('data-marketplace', marketplace);
+					}
+					
 					const script = document.createElement('script');
 
 					$(script).attr({
