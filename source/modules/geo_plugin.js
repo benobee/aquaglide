@@ -40,7 +40,7 @@ const Geo = {
 			success: (data) => {
 				switch (data.country) {
 					case "US": marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6"; break;
-					case "CA": marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6"; break;
+					// case "CA": marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6"; break;
 					default: marketplace = '';
 				}
 				
