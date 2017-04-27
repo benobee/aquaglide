@@ -9,13 +9,12 @@
 
 const Geo = {
 	init(){
-		this.geoQuery();
-
 		const productPage = this.checkProductPage();
 
 		/* if DOM element is on page run scripts*/
 		if (productPage) {
 			this.cacheDOM();
+			this.geoQuery();
 		}
 
 	},
@@ -43,7 +42,7 @@ const Geo = {
 					// case "CA": marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6"; break;
 					default: marketplace = '';
 				}
-				
+
 				const productPage = this.checkProductPage();
 
 				this.query = data.country;
@@ -68,6 +67,9 @@ const Geo = {
 					$('head').append(script);
 
 				}
+			},
+			error: (error) => {
+				console.error(error);
 			}
 		});
 	},
@@ -78,7 +80,7 @@ const Geo = {
 		 * to cart button
 		*/
 
-		const isApproved = (country == "US" || country == "CA");
+		const isApproved = (country == "US");
 
 		if(!isApproved) {
 			this.renderDealerButton();

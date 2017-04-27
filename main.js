@@ -6,7 +6,7 @@
  *
  */
 
-import * as core from "./source/modules/index.js";
+import * as core from "./src/modules/index.js";
 import $ from "jquery";
 
 /* compile all less files from ./stylesheets */

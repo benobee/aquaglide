@@ -1,50 +1,41 @@
-/**
- *
- * @description related to filters on the product list view
- *
- */
-
-.filter-select{
-  margin-bottom:1em;
-  width:100%;
-  display:flex;
-  display:-webkit-flex;
-  flex-wrap:wrap;
-  .category-select-wrapper{
-    display:flex;
-    display:-webkit-flex;
-    flex-wrap:wrap;
-    margin-left:1em;
-    .category-select{
-      margin-right:0.5em;
-      margin-bottom:0.5em;
-      padding:0.3em 1em;
-      background:none;
-      border:2px solid #dbdbdb;
-      text-transform: uppercase;
-      font-size:0.9em;
-      font-weight: 800;
-      color:@button;
-      transition:0.4s;
-      cursor:pointer;
-      height:30px;
-      &.active{
-        border-color:@highlight;
-        background:@highlight;
-        color:white;
-      }
-      &:hover{
-        border-color:@highlight;
-        background:@highlight;
-        color:white;
-      }
+.filter-select {
+    margin-bottom: 1em;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    .category-select-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 1em;
+        .category-select {
+            margin-right: 0.5em;
+            margin-bottom: 0.5em;
+            padding: 0.3em 1em;
+            background: none;
+            border: 2px solid #dbdbdb;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            font-weight: 800;
+            color: @button;
+            transition: 0.4s;
+            cursor: pointer;
+            height: 30px;
+            &.active {
+                border-color: @highlight;
+                background: @highlight;
+                color: white;
+            }
+            &:hover {
+                border-color: @highlight;
+                background: @highlight;
+                color: white;
+            }
+        }
     }
-  }
 }
-
-.filter-title{
-  height: 120px;
-  width:100%;
-  text-align: center;
-  margin-bottom:0 !important;
+.filter-title {
+    height: 120px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0 !important;
 }

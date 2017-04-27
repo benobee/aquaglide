@@ -1,120 +1,103 @@
-/**
- *
- * @description styles related to the banner
- *
- */
-
-.layer{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width:100%;
-  height:700px;
+.layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 700px;
 }
-.title-wrapper{
-  background:#231F20;
-  border-bottom:#231F20 3px solid;
-  @media screen and (max-width:768px){
-     background:#231F20;
-  }
-  .title{
-    h1{
-      padding:0.5em;
-      margin:0;
-      color:white !important;
+.title-wrapper {
+    background: #231F20;
+    border-bottom: #231F20 3px solid;
+    @media screen and (max-width:768px) {
+        background: #231F20;
     }
-  }
-}
-
-.Product-banner{
-  max-height:650px;
-  @media screen and (max-width:768px){
-      max-height:300px;
-  }
-  &.disable-animation{
-      animation:none;
-  }
-  &.has-animation{
-    .owl-carousel{
-      transform:scale(1.08,1.08) translate(-20px,0px);
-      -webkit-transform:scale(1.08,1.08) translate(-20px,0px);
-      -moz-transform:scale(1.08,1.08) translate(-20px,0px);
-      -o-transform:scale(1.08,1.08) translate(-20px,0px);
-    }    
-  }
-  overflow:hidden;
-  display:flex;
-  transition:0.2s;
-  .product-info-header{
-    background:#231F20;
-    width:25%;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    position: relative;
-    @media screen and (max-width:768px){
-      display:none;
-    }
-    .image{
-        .layer;
-        background-repeat: no-repeat;
-        background-position: 50% 50%;
-        background-size:contain;
-        transform: translateY(100px);
-        -webkit-transform: translateY(100px);
-        -moz-transform: translateY(100px);
-        -o-transform: translateY(100px);
-        animation:thumb ease-out 0.2s forwards;
-        -webkit-animation:thumb ease-out 0.2s forwards;
-        -webkit-animation-delay:0.8s;
-        animation-delay:0.8s;
-        opacity:0;
-        z-index:3;
-        max-height:650px;
-        @media screen and (max-width:768px){
-
-            max-height:300px;
+    .title {
+        h1 {
+            padding: 0.5em;
+            margin: 0;
+            color: white !important;
         }
     }
-  }
-  .product-media-header{
-      width:100%;
-      overflow:hidden;
-      @media screen and (max-width:768px){
-        width:100%;
-      }
-  }
-  .banner-media-wrapper{
-    position: relative;
-    overflow:hidden;
-    .owl-carousel{
-      .image{
-          background-size:cover;
-          background-position: center center;
-          background-repeat: no-repeat;
-          height:650px;
-      }     
+}
+.Product-banner {
+    max-height: 650px;
+    overflow: hidden;
+    display: flex;
+    transition: 0.2s;
+    @media screen and (max-width:768px) {
+        max-height: 300px;
     }
-    .image-overlay{
-        background: rgba(250,200,100,0.15);
-        box-shadow: 0 0 150px #3d3d3d inset;
-        z-index:1;
-        .layer;
+    &.disable-animation {
+        animation: none;
     }
-    .banner-content-wrapper{
-      z-index:2;
-      display:flex;
-      display:-webkit-flex;
-      justify-content:flex-end;
-      align-items:flex-end;
-      .layer;  
-      .banner-content{
-         color:white;
-         font-size:4em;
-         padding:1em;
-      }
+    &.has-animation {
+        .owl-carousel {
+            transform: scale(1.08,1.08) translate(-20px,0px);
+        }
     }
-  }
+    .product-info-header {
+        background: #231F20;
+        width: 25%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        @media screen and (max-width:768px) {
+            display: none;
+        }
+        .image {
+            .layer;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: contain;
+            transform: translateY(100px);
+            animation: thumb ease-out 0.2s forwards;
+            animation-delay: 0.8s;
+            opacity: 0;
+            z-index: 3;
+            max-height: 650px;
+            @media screen and (max-width:768px) {
+                max-height: 300px;
+            }
+        }
+    }
+    .product-media-header {
+        width: 100%;
+        overflow: hidden;
+        @media screen and (max-width:768px) {
+            width: 100%;
+        }
+    }
+    .banner-media-wrapper {
+        position: relative;
+        overflow: hidden;
+        .owl-carousel {
+            .image {
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                height: 650px;
+            }
+        }
+        .image-overlay {
+            background: rgba(250,200,100,0.15);
+            box-shadow: 0 0 150px #3d3d3d inset;
+            z-index: 1;
+            .layer;
+        }
+        .banner-content-wrapper {
+            z-index: 2;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            .layer;
+            .banner-content {
+                color: white;
+                font-size: 4em;
+                padding: 1em;
+            }
+        }
+    }
 }

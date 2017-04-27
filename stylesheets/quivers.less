@@ -1,56 +1,45 @@
-/**
- *
- * @description Quiver's styles
- *
- */
-
-body[data-quivers="true"]{
+body[data-quivers="true"] {
     width: calc(100%) !important;
 }
-
-#currentView{
-  z-index:999;
+#currentView {
+    z-index: 999;
 }
-
-#QuiversRibbon{
-	transform:translate(150px,26px);
-	transition:0.4s;
-	box-shadow: none;
-	border-radius:3px;
-	visibility: hidden;
-	opacity:0;
-	&.cart-open{
-		opacity:1 !important;
-		visibility: visible;
-		transform:translate(-105px,26px);
-	}
-	.q-link.qLogo{
-		display:none;
-	}
-	.q-link.qName{
-		display:none;
-	}
+#QuiversRibbon {
+    transform: translate(150px,26px);
+    transition: 0.4s;
+    box-shadow: none;
+    border-radius: 3px;
+    visibility: hidden;
+    opacity: 0;
+    &.cart-open {
+        opacity: 1 !important;
+        visibility: visible;
+        transform: translate(-105px,26px);
+    }
+    .q-link.qLogo {
+        display: none;
+    }
+    .q-link.qName {
+        display: none;
+    }
 }
-
-#QuiversRibbon .qButtonText{
-    font-weight:600;
-    text-transform:uppercase;
-    font-size:10px !important;
+#QuiversRibbon .qButtonText {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 10px !important;
 }
-
-.q-link.qLogo, .q-link.qName{
-  display:none;
+.q-link.qLogo, .q-link.qName {
+    display: none;
 }
-.qProductName{
-   display:none;
+.qProductName {
+    display: none;
 }
-.view.widget{
-   padding:0;
+.view.widget {
+    padding: 0;
 }
-#qProduct{
-  padding:0;
+#qProduct {
+    padding: 0;
 }
-.qVariantPrice{
-  text-align:left;
+.qVariantPrice {
+    text-align: left;
 }
-
