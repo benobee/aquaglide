@@ -105,26 +105,12 @@ const filters = {
         $(target[ 0 ]).addClass("active");
     },
     slugify (filterName) {
-
-        /*
-         * @desc slugify a string
-         */
         return filterName.toLowerCase().replace(/ /g, "-").replace(/-&-/g, "-");
     },
     clearRenderTargetArea () {
-
-        /*
-         * @desc clear rendered grid
-         */
-
         $(this.grid).html("");
     },
     render () {
-
-        /*
-         * @desc render items
-         */
-
         $.each(this.items, (i) => {
             $(this.grid).append(this.items[ i ].dom);
         });
@@ -132,9 +118,6 @@ const filters = {
         $(this.grid).addClass("is-initialized");
     },
     events () {
-        /*
-         * @desc event handelers
-         */
         window.onhashchange = null;
         $(window).on("hashchange", (e) => {
             e.preventDefault();
