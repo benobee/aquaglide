@@ -1,24 +1,19 @@
-/**
- *
- * @public
- * @namespace App
- * @description constructs and initializes all core modules
- *
- */
-
 import * as core from "./src/modules/index.js";
 import $ from "jquery";
 
-/* compile all less files from ./stylesheets */
-const css = require("./main.less");
+/**
+ * @public
+ * @namespace App
+ * @description constructs and initializes all core modules
+ */
 
 class App_Build {
-    constructor() {
-    	this.runModules();
+    constructor () {
+        this.runModules();
     }
-    runModules(){
+    runModules () {
         /* wait for window to load */
-        $(window).on("load", (e) => {
+        $(window).on("load", () => {
             core.animation.init();
         });
         /* wait until document is ready */
@@ -30,6 +25,8 @@ class App_Build {
             core.geo.init();
         });
     }
-};
+}
 
 const App = new App_Build();
+
+export default App;
