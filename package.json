@@ -5,10 +5,10 @@
     "main": "main.js",
     "scripts": {
         "test": "mocha",
-        "start": "webpack --progress --colors --watch --mode=development&&documentation build --output ./README.md --format md",
+        "start": "webpack --progress --colors --watch --open --config ./config/webpack/webpack.dev.js&&documentation build --output ./README.md --format md",
         "watch": "./node_modules/.bin/webpack -d --watch --colors",
-        "build": "set PROD_ENV=true && set process.env='production' && webpack -p --mode=production&&documentation build --output ./README.md --format md",
-        "dev": "webpack-dev-server ./main.js --hot --watch --colors --mode=development&&documentation build --output ./README.md --format md",
+        "build": "webpack -p --config ./config/webpack/webpack.prod.js&&documentation build --output ./README.md --format md",
+        "dev": "webpack-dev-server ./main.js --hot --watch --colors --open --config ./config/webpack/webpack.dev.js&&documentation build --output ./README.md --format md",
         "sqs": "squarespace-server https://aquaglide.squarespace.com --auth -d ./template"
     },
     "babel": {
@@ -24,6 +24,7 @@
         "babel-core": "^6.24.0",
         "babel-eslint": "^8.2.5",
         "babel-loader": "^7.1.2",
+        "babel-minify-webpack-plugin": "^0.3.1",
         "babel-plugin-transform-runtime": "^6.23.0",
         "babel-polyfill": "^6.23.0",
         "babel-preset-env": "^1.6.0",
@@ -53,9 +54,11 @@
         "postcss-loader": "^2.1.5",
         "postcss-smart-import": "^0.7.6",
         "style-loader": "^0.21.0",
+        "uglifyjs-webpack-plugin": "^1.2.7",
         "webpack": "^4.12.1",
         "webpack-cli": "^3.0.8",
-        "webpack-dev-server": "^3.1.4"
+        "webpack-dev-server": "^3.1.4",
+        "webpack-merge": "^4.1.3"
     },
     "dependencies": {
         "jquery": "^3.1.1",
