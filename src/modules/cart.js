@@ -9,9 +9,7 @@ const cart = {
         /* toggle quivers cart in nav */
         $(".Cart").on("click", (e) => {
             e.stopPropagation();
-
             $("#QuiversRibbon, #secondaryNavWrapper").toggleClass("cart-open");
-
         });
         /* click anywhere on body to hide quivers hover cart*/
         $("body").on("click", () => {
