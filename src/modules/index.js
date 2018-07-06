@@ -9,7 +9,6 @@ import product from "./product_item.js";
 import Events from "./pubsub.js";
 import filters from "./filters.js";
 import cart from "./cart.js";
-import navbar from "./navbar.js";
 import geo from "./geo_plugin.js";
 
 export {
@@ -18,6 +17,5 @@ export {
     Events,
     filters,
     cart,
-    navbar,
     geo
 };

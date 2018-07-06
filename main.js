@@ -18,7 +18,6 @@ class App_Build {
         });
         /* wait until document is ready */
         $(document).ready(() => {
-            core.navbar.init();
             core.product.init();
             core.filters.init();
             core.cart.init();

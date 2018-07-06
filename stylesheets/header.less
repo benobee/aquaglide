@@ -1,28 +1,51 @@
+/* making the quivers cart visible over fixed nav*/
+#QuiversRibbon {
+  z-index: 99999999 !important;
+}
+
+/* cart on mobile nav */
+.mobile-cart-toggle-label {
+  order: 4;
+  display: flex;
+  align-items: center;
+  padding: 0px 15px;
+  .Icon.Icon--cart {
+    stroke-width: 4;
+    fill: black;
+    stroke: black;
+  }
+}
+
+/* hide the option for mobile menu on right */
+.mobile-bar-flex-child {
+  display: none !important;
+}
+
 .mobile-bar-wrapper {
-    .mobile-branding-wrapper {
-        transition: opacity 0.4s;
-        &.active-scrolling {
-            opacity: 0;
-            visibility: hidden;
-        }
+  .mobile-branding-wrapper {
+    transition: opacity 0.4s;
+    &.active-scrolling {
+      opacity: 0;
+      visibility: hidden;
     }
+  }
 }
 #secondaryNavWrapper {
-    display: flex;
-    transition: opacity 0.4s;
-    &.cart-open {
-        opacity: 0;
+  display: flex;
+  transition: opacity 0.4s;
+  &.cart-open {
+    opacity: 0;
+  }
+  .social-top-nav {
+    margin-left: 1em;
+    @media screen and (max-width: 1168px) {
+      display: none;
     }
-    .social-top-nav {
-        margin-left: 1em;
-        @media screen and (max-width:1168px) {
-            display: none;
-        }
-        .sqs-svg-icon--list {
-            display: flex;
-        }
+    .sqs-svg-icon--list {
+      display: flex;
     }
+  }
 }
 .Cart {
-    cursor: pointer;
+  cursor: pointer;
 }

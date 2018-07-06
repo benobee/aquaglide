@@ -6,7 +6,6 @@ const optimization = require("./components/optimization.js");
 
 module.exports = merge(common, optimization, {
     mode: 'production',
-    devtool: 'source-map',
     plugins: [
         new UglifyJSPlugin({
             sourceMap: true

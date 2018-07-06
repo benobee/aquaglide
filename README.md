@@ -19,8 +19,7 @@
     -   [makeButtonActive][15]
         -   [Parameters][16]
 -   [cart][17]
--   [navbar][18]
--   [Geo][19]
+-   [Geo][18]
 
 ## App
 
@@ -57,9 +56,9 @@ sort array by name
 
 #### Parameters
 
--   `array` **[Array][20]** the input array
+-   `array` **[Array][19]** the input array
 
-Returns **[Array][20]** a sorted array
+Returns **[Array][19]** a sorted array
 
 ### filterByCategory
 
@@ -67,7 +66,7 @@ sort array by specified filter
 
 #### Parameters
 
--   `filterName` **[String][21]** the string to filter the collection by
+-   `filterName` **[String][20]** the string to filter the collection by
 
 ### checkHash
 
@@ -80,9 +79,9 @@ change hash to slug
 
 #### Parameters
 
--   `hash` **[String][21]** the has in the url
+-   `hash` **[String][20]** the has in the url
 
-Returns **[String][21]** hash
+Returns **[String][20]** hash
 
 ### makeButtonActive
 
@@ -90,15 +89,11 @@ add active state to button
 
 #### Parameters
 
--   `hash` **[String][21]** based on the hash the corresponding button will be active
+-   `hash` **[String][20]** based on the hash the corresponding button will be active
 
 ## cart
 
 handles the Quivers hover cart toggling from the main nav
-
-## navbar
-
-handles all additional event bindings or injected elements
 
 ## Geo
 
@@ -139,10 +134,8 @@ Chance location specific options for product page buy button.
 
 [17]: #cart
 
-[18]: #navbar
+[18]: #geo
 
-[19]: #geo
+[19]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[20]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
-
-[21]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[20]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

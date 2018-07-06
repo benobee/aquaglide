@@ -6,12 +6,13 @@ import $ from "jquery";
 
 const cart = {
     init () {
+        $(".Cart a").on("click", (e) => {
+            e.preventDefault();
+        });
         /* toggle quivers cart in nav */
         $(".Cart").on("click", (e) => {
             e.stopPropagation();
-
             $("#QuiversRibbon, #secondaryNavWrapper").toggleClass("cart-open");
-
         });
         /* click anywhere on body to hide quivers hover cart*/
         $("body").on("click", () => {
