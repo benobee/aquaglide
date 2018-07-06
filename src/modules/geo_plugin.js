@@ -34,7 +34,7 @@ const Geo = {
         let marketplace = "";
 
         $.ajax({
-            url: "https://ipinfo.io/json",
+            url: "https://ipinfo.io/json?token=d3cd176decd4e9",
             success: (data) => {
                 switch (data.country) {
                     case "US":
