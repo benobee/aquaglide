@@ -5,11 +5,12 @@
     "main": "main.js",
     "scripts": {
         "test": "mocha",
-        "start": "webpack --progress --colors --watch --open --config ./config/webpack/webpack.dev.js&&documentation build --output ./README.md --format md",
+        "start": "webpack --progress --colors --watch --open --config ./config/webpack/webpack.dev.js",
         "watch": "./node_modules/.bin/webpack -d --watch --colors",
-        "build": "webpack -p --config ./config/webpack/webpack.prod.js&&documentation build --output ./README.md --format md",
-        "dev": "webpack-dev-server ./main.js --hot --watch --colors --open --config ./config/webpack/webpack.dev.js&&documentation build --output ./README.md --format md",
-        "sqs": "squarespace-server https://aquaglide.squarespace.com --auth -d ./template"
+        "build": "webpack -p --config ./config/webpack/webpack.prod.js&&yarn run docs",
+        "dev": "webpack-dev-server ./main.js --hot --watch --colors --open --config ./config/webpack/webpack.dev.js",
+        "sqs": "squarespace-server https://aquaglide.squarespace.com --auth -d ./template",
+        "docs": "documentation build --output ./README.md --format md"
     },
     "babel": {
         "presets": [
@@ -62,7 +63,6 @@
     },
     "dependencies": {
         "jquery": "^3.1.1",
-        "owl.carousel": "^2.2.0",
-        "underscore": "^1.8.3"
+        "owl.carousel": "^2.2.0"
     }
 }

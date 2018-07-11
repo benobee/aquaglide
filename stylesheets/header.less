@@ -1,3 +1,22 @@
+#header {
+  padding-top: 0;
+  padding-bottom: 0;
+  [data-nc-container="right"] {
+    flex-wrap: nowrap;
+  }
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+/* Hide the cart in the nav */
+.cart-wrapper {
+  margin-left: 30px !important;
+  &.loaded {
+    display: block;
+  }
+}
+
 /* making the quivers cart visible over fixed nav*/
 #QuiversRibbon {
   z-index: 99999999 !important;
@@ -36,16 +55,70 @@
   &.cart-open {
     opacity: 0;
   }
-  .social-top-nav {
-    margin-left: 1em;
-    @media screen and (max-width: 1168px) {
-      display: none;
-    }
-    .sqs-svg-icon--list {
-      display: flex;
-    }
-  }
 }
 .Cart {
   cursor: pointer;
+}
+
+/* AG Main Nav */
+
+.folder-toggle-label {
+  color: white !important;
+}
+
+.ag-subnav {
+  opacity: 0;
+  position: fixed;
+  background: @blue;
+  visibility: hidden;
+  left: 0;
+  right: 0;
+  top: 74px;
+  z-index: 1;
+  font-size: 0.85em;
+  transition: 0.4s;
+  .inner-nav {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    height: 60px;
+  }
+}
+
+.nav-item.folder {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  cursor: pointer;
+  &:after {
+    content: "";
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 55px;
+    width: 0px;
+    height: 0px;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 28px solid @blue;
+  }
+  .external,
+  .collection {
+    padding-right: 1em;
+  }
+  &:hover {
+    &:after {
+      transition: opacity 0.4s 0.2s;
+      opacity: 1;
+      visibility: visible;
+    }
+    .ag-subnav {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 }
