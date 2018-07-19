@@ -1,6 +1,7 @@
 #header {
   padding-top: 0;
   padding-bottom: 0;
+  margin: 0 !important;
   [data-nc-container="right"] {
     flex-wrap: nowrap;
   }
@@ -9,9 +10,27 @@
   }
 }
 
+/* Mobile Nav */
+#overlayNav {
+  * {
+    text-align: left;
+    text-transform: uppercase !important;
+  }
+  .folder {
+    .subnav {
+      a {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    display: flex !important;
+  }
+}
+
 /* Hide the cart in the nav */
 .cart-wrapper {
-  margin-left: 30px !important;
   &.loaded {
     display: block;
   }
@@ -27,7 +46,7 @@
   order: 4;
   display: flex;
   align-items: center;
-  padding: 0px 15px;
+  padding: 10px 15px;
   .Icon.Icon--cart {
     stroke-width: 4;
     fill: black;
@@ -49,12 +68,10 @@
     }
   }
 }
+
 #secondaryNavWrapper {
   display: flex;
   transition: opacity 0.4s;
-  &.cart-open {
-    opacity: 0;
-  }
 }
 .Cart {
   cursor: pointer;
@@ -73,7 +90,7 @@
   visibility: hidden;
   left: 0;
   right: 0;
-  top: 74px;
+  top: 76px;
   z-index: 1;
   font-size: 0.85em;
   transition: 0.4s;
@@ -83,7 +100,15 @@
     max-width: 1200px;
     margin: 0 auto;
     align-items: center;
-    height: 60px;
+    a {
+      transition: opacity 0.3s;
+      display: block;
+      padding-top: 1.5em;
+      padding-bottom: 1.5em;
+      &:hover {
+        opacity: 0.6;
+      }
+    }
   }
 }
 
@@ -120,5 +145,59 @@
       opacity: 1;
       visibility: visible;
     }
+  }
+}
+
+/* Navigation */
+#mainNavWrapper {
+  .nav-item {
+    label {
+      transition: opacity 0.3s;
+    }
+    &:hover {
+      label {
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+.mobile-menu-open {
+  .mobile-bar-wrapper {
+    background: none !important;
+    box-shadow: 0px 0px 0px rgba(10, 10, 10, 0);
+  }
+}
+.mobile-bar-wrapper {
+  box-shadow: 0px 4px 10px rgba(10, 10, 10, 0.2);
+}
+#secondaryNavWrapper {
+  .Cart {
+    display: none;
+    font-size: 1em;
+    stroke-width: 16 !important;
+  }
+}
+.overlay-nav-container {
+  z-index: 9990;
+}
+
+.mobile-menu-open {
+  .mobile-branding-wrapper {
+    opacity: 0;
+    z-index: -34 !important;
+  }
+}
+
+.mobile-nav-toggle-label {
+  z-index: 9999999996;
+  padding: 10px 21px;
+}
+
+#secondaryNavWrapper {
+  align-items: center;
+  .sqs-svg-icon--list a {
+    height: 28px;
+    width: 28px;
   }
 }

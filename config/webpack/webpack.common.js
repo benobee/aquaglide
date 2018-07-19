@@ -1,8 +1,9 @@
 const merge = require('webpack-merge');
-const rules = require("./components/rules.js");
+const rules = require("./util/rules.js");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const MinifyPlugin = require("babel-minify-webpack-plugin");
+//const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = merge(rules, {
     context: __dirname,
@@ -32,7 +33,8 @@ module.exports = merge(rules, {
         new webpack.ProvidePlugin({
             'Promise': 'es6-promise',
             'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-        })
+        }),
+        //new HtmlWebpackPlugin()
     ],
     output: {
         publicPath: '/',

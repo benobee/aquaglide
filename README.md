@@ -2,140 +2,79 @@
 
 ### Table of Contents
 
--   [App][1]
--   [core][2]
--   [animation][3]
--   [product][4]
--   [Events][5]
--   [filters][6]
-    -   [mapArray][7]
-    -   [sortByName][8]
-        -   [Parameters][9]
-    -   [filterByCategory][10]
-        -   [Parameters][11]
-    -   [checkHash][12]
-    -   [formatHash][13]
-        -   [Parameters][14]
-    -   [makeButtonActive][15]
-        -   [Parameters][16]
--   [cart][17]
--   [Geo][18]
+-   [registerAPIControllers][1]
+-   [Controller][2]
+    -   [elementIsActive][3]
+        -   [Parameters][4]
+    -   [watch][5]
+        -   [Parameters][6]
+-   [api][7]
+    -   [Examples][8]
+-   [Geo][9]
 
-## App
+## registerAPIControllers
 
-constructs and initializes all core modules
+events are bound to the controller when
+elements are found within the DOM.
 
-## core
+## Controller
 
-Holds the different core modules.
+Bind events to active DOM elements
+through publish / subscribe
 
-## animation
+### elementIsActive
 
-initializes elements tha need to wait for page or window
-to load for smooth transitions.
-
-## product
-
-handles all carousels, events on single product view
-
-## Events
-
-pub sub design pattern
-
-## filters
-
-responsible for product list view filtering. Checks hash and filters accordingly.
-
-### mapArray
-
-sortable array options
-
-### sortByName
-
-sort array by name
+Tests whether the node is active in the DOM
 
 #### Parameters
 
--   `array` **[Array][19]** the input array
+-   `query` **[String][10]** query selector
 
-Returns **[Array][19]** a sorted array
+Returns **[HTMLElement][11]** DOM Node
 
-### filterByCategory
+### watch
 
-sort array by specified filter
-
-#### Parameters
-
--   `filterName` **[String][20]** the string to filter the collection by
-
-### checkHash
-
-ook at the hash on page load
-and filter results accordingly
-
-### formatHash
-
-change hash to slug
+emit event when the DOM element is active
 
 #### Parameters
 
--   `hash` **[String][20]** the has in the url
+-   `array` **[Array][12]** list of nodes
 
-Returns **[String][20]** hash
+## api
 
-### makeButtonActive
+### Examples
 
-add active state to button
-
-#### Parameters
-
--   `hash` **[String][20]** based on the hash the corresponding button will be active
-
-## cart
-
-handles the Quivers hover cart toggling from the main nav
+```javascript
+controller.on("navbar", (el) => {
+  navbar.init();
+});
+```
 
 ## Geo
 
 detect geo location using geo_plugin script in head.
 Chance location specific options for product page buy button.
 
-[1]: #app
+[1]: #registerapicontrollers
 
-[2]: #core
+[2]: #controller
 
-[3]: #animation
+[3]: #elementisactive
 
-[4]: #product
+[4]: #parameters
 
-[5]: #events
+[5]: #watch
 
-[6]: #filters
+[6]: #parameters-1
 
-[7]: #maparray
+[7]: #api
 
-[8]: #sortbyname
+[8]: #examples
 
-[9]: #parameters
+[9]: #geo
 
-[10]: #filterbycategory
+[10]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[11]: #parameters-1
+[11]: https://developer.mozilla.org/docs/Web/HTML/Element
 
-[12]: #checkhash
-
-[13]: #formathash
-
-[14]: #parameters-2
-
-[15]: #makebuttonactive
-
-[16]: #parameters-3
-
-[17]: #cart
-
-[18]: #geo
-
-[19]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
-
-[20]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

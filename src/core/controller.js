@@ -1,5 +1,4 @@
 import PubSub from "./pubsub";
-import DOM from "../modules/dom";
 
 const events = new PubSub();
 
@@ -20,7 +19,7 @@ class Controller {
      * @returns {HTMLElement}       DOM Node
      */
     elementIsActive (query) {
-        const el = DOM.findOne(query);
+        const el = document.querySelector(query);
 
         if (!el) {
             return false;

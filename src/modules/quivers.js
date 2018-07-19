@@ -1,4 +1,4 @@
-import $ from "jquery";
+import axios from "axios";
 
 /**
  * @public
@@ -7,20 +7,20 @@ import $ from "jquery";
  * Chance location specific options for product page buy button.
  */
 
-const Geo = {
+const quivers = {
     init () {
         const productPage = this.checkProductPage();
 
+        this.geoQuery();
         /* if DOM element is on page run scripts*/
         if (productPage) {
             this.cacheDOM();
-            this.geoQuery();
         }
     },
     checkProductPage () {
-        let productPage = $(".Product");
+        let productPage = document.querySelector(".Product");
 
-        if (productPage.length > 0) {
+        if (productPage) {
             productPage = true;
         }
 
@@ -30,13 +30,20 @@ const Geo = {
      *  @desc get users country location returned as country code
      *	using geo plugin script in HEAD
      */
+
     geoQuery () {
         let marketplace = "";
+        const request = axios.get("https://ipinfo.io/json?token=d3cd176decd4e", {
+            headers: {
+                "Cache-Control": "no-cache, no-store, must-revalidate"
+            }
+        });
 
-        $.ajax({
-            url: "https://ipinfo.io/json?token=d3cd176decd4e9",
-            success: (data) => {
-                switch (data.country) {
+        console.log({ market: marketplace });
+
+        request.then((response) => {
+                console.log(response.data);
+                switch (response.data.country) {
                     case "US":
                         marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6";
                         break;
@@ -47,28 +54,28 @@ const Geo = {
 
                 const productPage = this.checkProductPage();
 
-                this.query = data.country;
+                this.query = response.data.country;
+
                 if (productPage) {
                     this.checkCountryCode(this.query);
                 }
                 if (marketplace.length > 0) {
                     if (productPage) {
-                        $(this.actions[ 0 ]).addClass("active-marketplace").attr("data-marketplace", marketplace);
+                        this.actions.classList.add("active-marketplace");
+                        this.actions.dataset.dataMarketplace = marketplace;
                     }
                     const script = document.createElement("script");
 
-                    $(script).attr({
-                        type: "text/javascript",
-                        src: `https://hovercart.quivers.com/?Marketplace=${ marketplace}`,
-                        async: "true"
-                    });
-                    $("head").append(script);
+                    script.type = "text/javascript";
+                    script.src = `https://hovercart.quivers.com/?Marketplace=${ marketplace}`;
+                    script.async = "true";
+
+                    document.querySelector("head").appendChild(script);
                 }
-            },
-            error: (error) => {
-                console.error(error);
-            }
-        });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     },
     /*
      * @desc check if one of the approved countries
@@ -80,7 +87,7 @@ const Geo = {
 
         if (!isApproved) {
             this.renderDealerButton();
-            $(".product-actions .product-price").remove();
+            document.querySelector(".product-actions .product-price").remove();
         }
         this.addDOMClasses();
     },
@@ -90,25 +97,26 @@ const Geo = {
      * quivers id is in place
      */
     renderDealerButton () {
-        $(this.actions[ 0 ]).addClass("outside-bounds");
+        this.actions.classList.add("outside-bounds");
         const link = document.createElement("a");
 
         link.setAttribute("href", "/dealers/");
         link.innerHTML = "Find A Dealer";
 
-        $(".product-buy").html(link);
+        document.querySelector(".product-buy").innerHTML(link);
     },
     /* @desc cache dom */
     cacheDOM () {
-        const productPage = $(".Product");
+        const productPage = document.querySelector(".Product");
 
-        this.actions = productPage.find(".product-actions");
-        this.button = productPage.find(".product-buy a");
+        this.actions = productPage.querySelector(".Product__actions");
+        this.button = productPage.querySelector(".product-buy a");
     },
     /* @desc add active class for CSS styling and country data attribute */
     addDOMClasses () {
-        $(this.actions[ 0 ]).addClass("geo-data-active").attr("data-country", this.query);
+        this.actions.classList.add("geo-data-active");
+        this.actions.dataset.dataCountry = this.query;
     }
 };
 
-export default Geo;
+export default quivers;

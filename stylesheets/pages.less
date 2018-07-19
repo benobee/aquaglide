@@ -1,0 +1,49 @@
+/* category indexs */
+#collection-58756bb0b3db2b3e1ec8d675,
+#collection-587572aae58c62c95311e463,
+#collection-587572612e69cfaf7c999d64,
+#collection-5876783b59cc6888b4fcdca5,
+#collection-5875424559cc68313a9bf0a0 {
+  .sqs-gallery-design-autogrid {
+    .summary-item {
+      overflow: hidden;
+      .summary-thumbnail-outer-container {
+        background: black;
+        img {
+          opacity: 0.7;
+        }
+      }
+      .summary-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        .summary-title {
+          a {
+            color: white;
+            text-transform: uppercase;
+          }
+        }
+      }
+      &:hover {
+        img {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+//no banner
+#collection-5875424559cc68313a9bf0a0,
+#collection-5878316ac534a5ef66e772a7,
+#collection-587831338419c2891ff1469a,
+#collection-58754298b8a79bd59e068b34 {
+  .page-banner-wrapper {
+    display: none !important;
+  }
+  #content {
+    padding-top: 10px;
+  }
+}

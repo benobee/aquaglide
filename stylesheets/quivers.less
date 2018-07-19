@@ -6,17 +6,13 @@ body[data-quivers="true"] {
 }
 
 #QuiversRibbon {
+  position: fixed !important;
   transform: translate(0px, 13px);
   transition: 0.4s;
   box-shadow: none;
   border-radius: 3px;
   visibility: hidden;
   opacity: 0;
-  &.cart-open {
-    opacity: 1 !important;
-    visibility: visible;
-    transform: translate(-60px, 13px);
-  }
   .q-link.qLogo {
     display: none;
   }
@@ -44,4 +40,75 @@ body[data-quivers="true"] {
 }
 .qVariantPrice {
   text-align: left;
+}
+
+/* PRODUCT PAGE */
+.view-item .product-info {
+  padding-top: 20px;
+  .qVariantDetails {
+    background: #ededed !important;
+    box-shadow: none !important;
+    border: none !important;
+    text-align: left !important;
+  }
+  .qVariantPrice {
+    padding-bottom: 1em !important;
+  }
+  .qWidgetButton.qAddToCart {
+    background: #887a7f;
+    color: white;
+    border-radius: 0;
+  }
+  .qProductShort {
+    max-width: 100% !important;
+  }
+  .qVariantPrice,
+  .qPurchaseOptions {
+    width: 100%;
+    text-align: left !important;
+    padding: 0;
+  }
+  #qProductOptions,
+  .qVariantInfo {
+    display: none;
+  }
+  .col-xs-12 {
+    margin: 0 !important;
+  }
+  .view.widget.row {
+    margin: 0 !important;
+    padding: 0;
+  }
+  .view-body.qProductsView {
+    padding: 0;
+  }
+}
+.product-specs {
+  p {
+    margin: 0.5em;
+  }
+}
+/* QUIVERS */
+body[data-quivers="true"] {
+  width: calc(100%) !important;
+}
+.qCartItemContents {
+  .q-link.qLogo,
+  .q-link.qName,
+  .qProductName {
+    display: block;
+  }
+}
+
+body {
+  &.cart-open {
+    #QuiversRibbon {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-60px, 13px);
+    }
+    #secondaryNavWrapper {
+      opacity: 0;
+    }
+  }
 }
