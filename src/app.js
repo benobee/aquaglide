@@ -14,7 +14,7 @@ const App = {
     registerAPIControllers () {
         controller.watch([{
             name: "navigation",
-            el: "#header"
+            el: "body"
         }, {
             name: "loader",
             el: ".loaderWrapper"

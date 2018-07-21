@@ -65,6 +65,7 @@
     },
     "dependencies": {
         "axios": "^0.18.0",
+        "load-script": "^1.0.0",
         "tiny-slider": "^2.8.2"
     }
 }

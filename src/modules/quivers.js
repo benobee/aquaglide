@@ -17,6 +17,15 @@ const quivers = {
             this.cacheDOM();
         }
     },
+    loadCart (marketplace) {
+        const script = document.createElement("script");
+
+        script.type = "text/javascript";
+        script.src = `https://hovercart.quivers.com/?Marketplace=${marketplace}`;
+        script.async = "true";
+
+        document.querySelector("head").appendChild(script);
+    },
     checkProductPage () {
         let productPage = document.querySelector(".Product");
 
@@ -30,19 +39,18 @@ const quivers = {
      *  @desc get users country location returned as country code
      *	using geo plugin script in HEAD
      */
-
     geoQuery () {
         let marketplace = "";
-        const request = axios.get("https://ipinfo.io/json?token=d3cd176decd4e", {
+        const request = axios.get("https://ipinfo.io/json", {
             headers: {
                 "Cache-Control": "no-cache, no-store, must-revalidate"
+            },
+            params: {
+                token: "d3cd176decd4e9"
             }
         });
 
-        console.log({ market: marketplace });
-
         request.then((response) => {
-                console.log(response.data);
                 switch (response.data.country) {
                     case "US":
                         marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6";
@@ -64,13 +72,8 @@ const quivers = {
                         this.actions.classList.add("active-marketplace");
                         this.actions.dataset.dataMarketplace = marketplace;
                     }
-                    const script = document.createElement("script");
 
-                    script.type = "text/javascript";
-                    script.src = `https://hovercart.quivers.com/?Marketplace=${ marketplace}`;
-                    script.async = "true";
-
-                    document.querySelector("head").appendChild(script);
+                    this.loadCart(marketplace);
                 }
             })
             .catch((error) => {
@@ -83,13 +86,16 @@ const quivers = {
      * to cart button
      */
     checkCountryCode (country) {
+        //console.log({ country });
         const isApproved = (country === "US");
 
         if (!isApproved) {
+            //console.log("not approved");
             this.renderDealerButton();
             document.querySelector(".product-actions .product-price").remove();
+        } else {
+            this.addDOMClasses();
         }
-        this.addDOMClasses();
     },
     /*
      * @desc create a button to be rendered in place of

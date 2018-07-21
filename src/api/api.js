@@ -11,19 +11,24 @@ import product from "../modules/product";
 
 const api = () => {
     // mobile nav
-    controller.on("navigation", (el) => {
+    controller.on("navigation", () => {
         // init quivers with geo location
         quivers.init();
 
         // cart related events
-        const cart = el.querySelector(".Cart");
+        const cart = document.querySelectorAll(".Cart");
         const body = document.querySelector("body");
 
-        /* toggle quivers cart in nav */
-        cart.addEventListener("click", (e) => {
-            e.stopPropagation();
-            body.classList.toggle("cart-open");
-        });
+        for (const i in cart) {
+            if (typeof cart[ i ] === "object") {
+                /* toggle quivers cart in nav */
+                cart[ i ].addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    body.classList.toggle("cart-open");
+                });
+            }
+        }
+
         /* click anywhere on body to hide quivers hover cart*/
         body.addEventListener("click", () => {
             body.classList.remove("cart-open");
