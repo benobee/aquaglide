@@ -1,6 +1,7 @@
 import controller from "../core/controller";
 import quivers from "../modules/quivers";
 import product from "../modules/product";
+import { $ } from "../modules/dom";
 
 /**
  * @example
@@ -8,6 +9,11 @@ import product from "../modules/product";
  *   navbar.init();
  * });
  */
+
+
+$(".item").on("click", (e) => {
+    console.log(e);
+});
 
 const api = () => {
 
