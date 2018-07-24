@@ -1,7 +1,7 @@
 .collection-type-amundson_products.view-item {
   #page {
     margin-top: 0;
-    max-width: 1600px;
+    max-width: 1350px;
     margin: 0 auto;
   }
 }
@@ -17,17 +17,23 @@
   }
 }
 
+.media-height {
+  height: 60vw;
+  max-height: 640px;
+  min-height: 350px;
+}
+
 /* PRODUCT CONTAINER */
 .Product__main {
   display: grid;
-  justify-content: center;
-  flex-wrap: wrap;
-  @height: 700px;
-  grid-template-columns: minmax(250px, auto);
-  grid-gap: 1em;
-  grid-template-columns: 70vw 30vw;
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: 100vw;
+  grid-template-columns: minmax(auto, auto);
+  grid-gap: 1rem;
+  grid-template-columns: 70% 30%;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 100%;
+    .media-content {
+      margin-left: -21px;
+    }
   }
   /* MEDIA */
   .Product__media {
@@ -35,10 +41,8 @@
     transition: opacity 0.4s;
     margin-top: 2em;
     .media-content {
-      max-width: 1000px;
       margin: 0 auto;
       position: relative;
-      padding: 2em;
       /* 3d showcase */
       .secondary-media {
         display: none;
@@ -84,18 +88,28 @@
           }
         }
         .item {
-          width: 100%;
           .image {
-            margin-left: 2vw;
-            margin-right: 2vw;
-            display: flex;
             cursor: pointer;
+            display: flex;
+            height: 60vw;
+            max-height: 640px;
+            min-height: 350px;
+            margin-left: 1em;
+            margin-right: 1em;
             img {
-              height: 40vw;
-              max-height: 600px;
-              min-height: 300px;
+              max-height: 640px;
+              min-height: 350px;
               width: 100%;
+              height: auto;
+              display: flex;
               object-fit: contain;
+            }
+            @media screen and (max-width: 768px) {
+              height: 60vw;
+              max-height: 500px;
+              img {
+                max-height: 500px;
+              }
             }
           }
           &.active {
@@ -103,31 +117,12 @@
           }
         }
       }
-      .thumbs {
-        max-height: 80px;
-        .thumb {
-          height: 100%;
-          overflow: hidden;
-        }
-        .image {
-          display: flex;
-          img {
-            max-height: 50px;
-            width: 100%;
-            object-fit: contain;
-          }
-        }
-      }
       .media-toggle {
         position: absolute;
         right: 1em;
         z-index: 999;
-        top: 2em;
+        top: 1em;
         margin-right: 0px;
-        @media screen and (max-width: 768px) {
-          right: 15px;
-          top: 0;
-        }
         .ui {
           display: flex;
           flex-direction: column;
@@ -190,15 +185,10 @@
   }
   .embed-iframe {
     background: white;
-    height: 40vw;
-    max-height: 600px;
+    .media-height;
     .sketchfab-embed-wrapper {
       iframe {
-        height: 40vw;
-        max-height: 600px;
-        @media screen and (max-width: 768px) {
-          max-height: 400px;
-        }
+        .media-height;
       }
     }
   }
@@ -208,24 +198,6 @@
     max-width: 400px;
     display: flex;
     align-items: center;
-    &.active-marketplace {
-      .product-price {
-        opacity: 1 !important;
-        visibility: visible !important;
-      }
-    }
-    &.outside-bounds {
-      .product-price {
-        opacity: 0 !important;
-        visibility: hidden !important;
-      }
-    }
-    &.geo-data-active {
-      .product-buy {
-        opacity: 1 !important;
-        visibility: visible !important;
-      }
-    }
     @media screen and (max-width: 1024px) {
       width: 100% !important;
     }
@@ -275,6 +247,28 @@
             background: @highlight;
           }
         }
+      }
+    }
+    &.active-marketplace {
+      .product-price {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    &.outside-bounds {
+      .product-price {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .product-buy {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    &.geo-data-active {
+      .product-buy {
+        opacity: 1;
+        visibility: visible;
       }
     }
   }

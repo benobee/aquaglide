@@ -1,5 +1,6 @@
 import lightboxCarousel from "./lightboxCarousel";
 import { tns } from "../../node_modules/tiny-slider/src/tiny-slider";
+import quivers from "./quivers";
 
 // product page methods
 const product = {
@@ -10,6 +11,22 @@ const product = {
         this.productCarousel();
         this.toggleMedia();
         this.focalPoints();
+        quivers.getGEOData((data) => {
+            this.handleAddToCartButtons(data);
+        });
+    },
+    handleAddToCartButtons (data) {
+        const productPage = document.querySelector(".Product");
+        const actions = productPage.querySelector(".Product__actions");
+
+        if (data.country !== "US") {
+            actions.classList.add("outside-bounds");
+        } else {
+            actions.classList.add("active-marketplace");
+            actions.dataset.dataMarketplace = data.marketplace;
+            actions.classList.add("geo-data-active");
+            actions.dataset.dataCountry = data.country;
+        }
     },
     toggleMedia () {
         /* media toggle between 2D and 3D */

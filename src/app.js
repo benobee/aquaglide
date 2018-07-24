@@ -21,6 +21,9 @@ const App = {
         }, {
             name: "product-page",
             el: ".Product"
+        }, {
+            name: "ag-index",
+            el: ".collection-type-ag_index"
         }]);
     }
 };

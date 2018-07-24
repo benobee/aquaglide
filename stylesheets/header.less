@@ -30,8 +30,13 @@
 }
 
 /* Hide the cart in the nav */
+
 .cart-wrapper {
-  &.loaded {
+  display: none;
+}
+
+body.marketplace-active {
+  .cart-wrapper {
     display: block;
   }
 }
