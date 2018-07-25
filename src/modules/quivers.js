@@ -15,10 +15,13 @@ const quivers = {
         this.events();
     },
     events () {
-        events.on("marketplaceFound", (data) => {
+        events.on("marketplaceProcessed", (data) => {
             this.data = data;
-            document.querySelector("body").classList.add("marketplace-active");
-            this.loadCart(data.marketplace);
+            if (data.marketplace) {
+                document.querySelector("body").classList.add("marketplace-active");
+                this.loadCart(data.marketplace);
+            }
+
             const productPage = document.querySelector(".Product");
 
             if (productPage) {
@@ -28,7 +31,7 @@ const quivers = {
     },
     getGEOData (callback) {
         events.on("productPageFound", (data) => {
-            callback(data);
+            callback(data, data.error);
         });
     },
     loadCart (marketplace) {
@@ -68,7 +71,17 @@ const quivers = {
                 }
 
                 if (marketplace.length > 0) {
-                    events.emit("marketplaceFound", { marketplace, country: response.data.country });
+                    events.emit("marketplaceProcessed", {
+                        marketplace,
+                        country: response.data.country,
+                        error: null
+                    });
+                } else {
+                    events.emit("marketplaceProcessed", {
+                        marketplace: null,
+                        country: response.data.country,
+                        error: "ERROR: No Marketplace Found or location not approved."
+                    });
                 }
             })
             .catch((error) => {

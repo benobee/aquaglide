@@ -45,12 +45,12 @@ class Element {
     }
 }
 
-const $ = (query) => {
+const dom = (query) => {
     const el = new Element(query);
 
     return el;
 };
 
 export {
-    $
+    dom
 };

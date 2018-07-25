@@ -1,7 +1,7 @@
 import controller from "../core/controller";
 import quivers from "../modules/quivers";
 import product from "../modules/product";
-import { $ } from "../modules/dom";
+import { dom } from "../modules/dom";
 
 /**
  * @example
@@ -9,11 +9,6 @@ import { $ } from "../modules/dom";
  *   navbar.init();
  * });
  */
-
-
-$(".item").on("click", (e) => {
-    console.log(e);
-});
 
 const api = () => {
 
@@ -23,21 +18,14 @@ const api = () => {
         quivers.init();
 
         // cart related events
-        const cart = document.querySelectorAll(".Cart");
         const body = document.querySelector("body");
 
-        for (const i in cart) {
-            if (typeof cart[ i ] === "object") {
-                /* toggle quivers cart in nav */
-                cart[ i ].addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    body.classList.toggle("cart-open");
-                });
-            }
-        }
-
+        dom(".Cart").on("click", (e) => {
+            e.stopPropagation();
+            body.classList.toggle("cart-open");
+        });
         /* click anywhere on body to hide quivers hover cart*/
-        body.addEventListener("click", () => {
+        dom("body").on("click", () => {
             body.classList.remove("cart-open");
         });
     });

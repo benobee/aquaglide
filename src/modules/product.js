@@ -11,8 +11,11 @@ const product = {
         this.productCarousel();
         this.toggleMedia();
         this.focalPoints();
-        quivers.getGEOData((data) => {
+        quivers.getGEOData((data, error) => {
             this.handleAddToCartButtons(data);
+            if (error) {
+                console.error(error);
+            }
         });
     },
     handleAddToCartButtons (data) {
@@ -21,6 +24,16 @@ const product = {
 
         if (data.country !== "US") {
             actions.classList.add("outside-bounds");
+            const button = document.createElement("div");
+            const link = document.createElement("a");
+            const target = actions.querySelector(".product-info");
+
+            button.classList.add("product-buy");
+            link.href = "https://www.aquaglide.com/dealers";
+            link.innerText = "Find A Dealer";
+
+            button.appendChild(link);
+            target.appendChild(button);
         } else {
             actions.classList.add("active-marketplace");
             actions.dataset.dataMarketplace = data.marketplace;
