@@ -121,11 +121,11 @@ const product = {
                 if (focalPoint) {
                     const split = focalPoint.split(",");
 
-                    x = `${Math.floor(this.convertToPercent(split[ 0 ])) }%`;
-                    y = `${Math.floor(this.convertToPercent(split[ 1 ])) }%`;
+                    x = `${Math.floor(this.convertToPercent(split[ 0 ]))}%`;
+                    y = `${Math.floor(this.convertToPercent(split[ 1 ]))}%`;
                     const imageSource = array[ i ].dataset.image;
 
-                    item.style.backgroundImage = `url(${ imageSource })`;
+                    item.style.backgroundImage = `url(${imageSource})`;
                     item.style.backgroundPositionX = x;
                     item.style.backgroundPositionY = y;
                 }

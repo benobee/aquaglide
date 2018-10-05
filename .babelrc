@@ -1,4 +1,9 @@
 {
-    "presets": ["env"],
-    "plugins": ["transform-object-assign"]
+    "presets": [
+        "env"
+    ],
+    "plugins": [
+        "transform-object-assign",
+        "syntax-dynamic-import"
+    ]
 }

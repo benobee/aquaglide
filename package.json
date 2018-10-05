@@ -5,10 +5,10 @@
     "main": "main.js",
     "scripts": {
         "test": "mocha",
-        "start": "webpack --progress --colors --watch --open --config ./config/webpack/webpack.dev.js",
+        "start": "webpack --progress --colors --watch --open --config ./build-utils/webpack/webpack.dev.js",
         "watch": "./node_modules/.bin/webpack -d --watch --colors",
-        "build": "webpack -p --config ./config/webpack/webpack.prod.js&&yarn run docs",
-        "dev": "webpack-dev-server --hot --watch --colors --open --config ./config/webpack/webpack.dev.js",
+        "build": "webpack -p --config ./build-utils/webpack/webpack.prod.js&&yarn run docs",
+        "dev": "webpack-dev-server --hot --watch --colors --open --config ./build-utils/webpack/webpack.dev.js",
         "sqs": "squarespace-server https://aquaglide.squarespace.com --auth -d ./template",
         "docs": "documentation build --output ./README.md --format md"
     },
@@ -26,6 +26,7 @@
         "babel-eslint": "^8.2.6",
         "babel-loader": "^7.1.5",
         "babel-minify-webpack-plugin": "^0.3.1",
+        "babel-plugin-syntax-dynamic-import": "^6.18.0",
         "babel-plugin-transform-object-assign": "^6.22.0",
         "babel-plugin-transform-runtime": "^6.23.0",
         "babel-polyfill": "^6.23.0",

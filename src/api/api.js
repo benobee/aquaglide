@@ -1,7 +1,7 @@
 import controller from "../core/controller";
 import quivers from "../modules/quivers";
-import product from "../modules/product";
 import { dom } from "../modules/dom";
+import product from "../modules/product";
 
 /**
  * @example
@@ -11,12 +11,10 @@ import { dom } from "../modules/dom";
  */
 
 const api = () => {
-
     // mobile nav
     controller.on("navigation", () => {
         // init quivers with geo location
         quivers.init();
-
         // cart related events
         const body = document.querySelector("body");
 
@@ -24,7 +22,7 @@ const api = () => {
             e.stopPropagation();
             body.classList.toggle("cart-open");
         });
-        /* click anywhere on body to hide quivers hover cart*/
+        // click anywhere on body to hide quivers hover cart
         dom("body").on("click", () => {
             body.classList.remove("cart-open");
         });
@@ -32,7 +30,7 @@ const api = () => {
 
     // Loader Splash screen with logo
     controller.on("loader", (el) => {
-        /* loader screen on home page */
+        // loader screen on home page
         setTimeout(() => {
             el.classList.add("hide");
         }, 150);
@@ -40,6 +38,7 @@ const api = () => {
 
     // product page events
     controller.on("product-page", (el) => {
+        // product.init(el);
         product.init(el);
     });
 };

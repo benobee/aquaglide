@@ -6,10 +6,11 @@ const optimization = require("./util/optimization.js");
 
 module.exports = merge(common, optimization, {
     mode: 'production',
+    devtool: 'source-map',
     plugins: [
-        new UglifyJSPlugin({
-            sourceMap: true
-        }),
+        // new UglifyJSPlugin({
+        //     sourceMap: true
+        // }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         })
