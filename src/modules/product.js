@@ -7,20 +7,27 @@ const product = {
     init (el) {
         this.el = el;
         this.lightbox = {};
+        this.cacheDOM();
         this.bannerImages();
         this.productCarousel();
         this.toggleMedia();
         this.focalPoints();
         quivers.getGEOData((data, error) => {
+            console.log(data);
             this.handleAddToCartButtons(data);
             if (error) {
                 console.error(error);
             }
         });
     },
+    cacheDOM () {
+        this.productPage = document.querySelector(".Product");
+    },
+    addCaliforniaCancerWarning () {
+
+    },
     handleAddToCartButtons (data) {
-        const productPage = document.querySelector(".Product");
-        const actions = productPage.querySelector(".Product__actions");
+        const actions = this.productPage.querySelector(".Product__actions");
 
         if (data.country !== "US") {
             actions.classList.add("outside-bounds");

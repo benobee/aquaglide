@@ -59,31 +59,32 @@ const quivers = {
         });
 
         request.then((response) => {
-                let marketplace = "";
+            let marketplace = "";
 
-                switch (response.data.country) {
-                    case "US":
-                        marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6";
-                        break;
-                        // case "CA": marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6"; break;
-                    default:
-                        marketplace = "";
-                }
+            switch (response.data.country) {
+                case "US":
+                    marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6";
+                    break;
+                // case "CA": marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6"; break;
+                default:
+                    marketplace = "";
+            }
 
-                if (marketplace.length > 0) {
-                    events.emit("marketplaceProcessed", {
-                        marketplace,
-                        country: response.data.country,
-                        error: null
-                    });
-                } else {
-                    events.emit("marketplaceProcessed", {
-                        marketplace: null,
-                        country: response.data.country,
-                        error: "ERROR: No Marketplace Found or location not approved."
-                    });
-                }
-            })
+            if (marketplace.length > 0) {
+                events.emit("marketplaceProcessed", {
+                    marketplace,
+                    country: response.data.country,
+                    error: null,
+                    state: response.data.region
+                });
+            } else {
+                events.emit("marketplaceProcessed", {
+                    marketplace: null,
+                    country: response.data.country,
+                    error: "ERROR: No Marketplace Found or location not approved."
+                });
+            }
+        })
             .catch((error) => {
                 console.log(error);
             });
