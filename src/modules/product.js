@@ -13,7 +13,10 @@ const product = {
         this.toggleMedia();
         this.focalPoints();
         quivers.getGEOData((data, error) => {
-            console.log(data);
+            // show warning for users in California
+            if (data.state === "California") {
+                this.addCaliforniaCancerWarning();
+            }
             this.handleAddToCartButtons(data);
             if (error) {
                 console.error(error);
@@ -24,7 +27,7 @@ const product = {
         this.productPage = document.querySelector(".Product");
     },
     addCaliforniaCancerWarning () {
-
+        this.productPage.classList.add("product-warning");
     },
     handleAddToCartButtons (data) {
         const actions = this.productPage.querySelector(".Product__actions");
@@ -97,7 +100,6 @@ const product = {
             el: carousel,
             mainCarousel: main
         });
-
         //bind listener to make lightbox carousel visible on click
         carousel.addEventListener("click", () => {
             document.querySelector("#Lightbox-carousel").classList.add("active");

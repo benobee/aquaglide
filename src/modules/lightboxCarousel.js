@@ -19,6 +19,10 @@ const lightboxCarousel = {
             controlsText: ["<i class='fas fa-chevron-left fa-2x'></i>", "<i class='fas fa-chevron-right fa-2x'></i>"]
         });
 
+        setTimeout(() => {
+            document.querySelector(".Product").classList.add("media-interaction-open");
+        }, 400);
+
         document.querySelector(".Lightbox-carousel__close").addEventListener("click", () => {
             self.close();
         });
@@ -27,6 +31,7 @@ const lightboxCarousel = {
     },
     close () {
         document.querySelector("#Lightbox-carousel").classList.remove("active");
+        document.querySelector(".Product").classList.remove("media-interaction-open");
     }
 };
 
