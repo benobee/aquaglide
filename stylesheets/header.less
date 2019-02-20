@@ -1,208 +1,214 @@
 #header {
-  padding-top: 0;
-  padding-bottom: 0;
-  margin: 0 !important;
-  [data-nc-container="right"] {
-    flex-wrap: nowrap;
-  }
-  @media screen and (max-width: 1024px) {
-    display: none;
-  }
+	padding-top: 0;
+	padding-bottom: 0;
+	margin: 0 !important;
+	[data-nc-container='right'] {
+		flex-wrap: nowrap;
+	}
+	@media screen and (max-width: 1024px) {
+		display: none;
+	}
 }
 
 /* Mobile Nav */
 #overlayNav {
-  * {
-    text-align: left;
-    text-transform: uppercase !important;
-  }
-  .folder {
-    .subnav {
-      a {
-        opacity: 0.5;
-      }
-    }
-  }
+	* {
+		text-align: left;
+		text-transform: uppercase !important;
+	}
+	.folder {
+		.subnav {
+			a {
+				opacity: 0.5;
+			}
+		}
+	}
 
-  @media screen and (max-width: 1024px) {
-    display: flex !important;
-  }
+	@media screen and (max-width: 1024px) {
+		display: flex !important;
+	}
 }
 
 /* Hide the cart in the nav */
-
 .cart-wrapper {
-  display: none;
+	display: none;
 }
 
 body.marketplace-active {
-  .cart-wrapper {
-    display: block;
-  }
+	.cart-wrapper {
+		display: block;
+	}
 }
 
 /* making the quivers cart visible over fixed nav*/
 #QuiversRibbon {
-  z-index: 99999999 !important;
+	z-index: 99999999 !important;
 }
 
 /* cart on mobile nav */
 .mobile-cart-toggle-label {
-  order: 4;
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  .Icon.Icon--cart {
-    stroke-width: 4;
-    fill: black;
-    stroke: black;
-  }
+	order: 4;
+	display: flex;
+	align-items: center;
+	padding: 10px 15px;
+	.Icon.Icon--cart {
+		stroke-width: 4;
+		fill: black;
+		stroke: black;
+	}
 }
 
 /* hide the option for mobile menu on right */
 .mobile-bar-flex-child {
-  display: none !important;
+	display: none !important;
 }
 
 .mobile-bar-wrapper {
-  .mobile-branding-wrapper {
-    transition: opacity 0.4s;
-    &.active-scrolling {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
+	.mobile-branding-wrapper {
+		transition: opacity 0.4s;
+		&.active-scrolling {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
 }
 
 #secondaryNavWrapper {
-  display: flex;
-  transition: opacity 0.4s;
+	display: flex;
+	transition: opacity 0.4s;
 }
 .Cart {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 /* AG Main Nav */
-
 .folder-toggle-label {
-  color: white !important;
+	color: white !important;
 }
 
 .ag-subnav {
-  opacity: 0;
-  position: fixed;
-  background: @blue;
-  visibility: hidden;
-  left: 0;
-  right: 0;
-  top: 76px;
-  z-index: 1;
-  font-size: 0.85em;
-  transition: 0.4s;
-  .inner-nav {
-    display: flex;
-    justify-content: space-around;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: center;
-    a {
-      transition: opacity 0.3s;
-      display: block;
-      padding-top: 1.5em;
-      padding-bottom: 1.5em;
-      &:hover {
-        opacity: 0.6;
-      }
-    }
-  }
+	opacity: 0;
+	position: fixed;
+	background: @blue;
+	visibility: hidden;
+	left: 0;
+	right: 0;
+	top: 76px;
+	z-index: 1;
+	font-size: 0.85em;
+	transition: 0.4s;
+	.inner-nav {
+		display: flex;
+		justify-content: space-around;
+		max-width: 1200px;
+		margin: 0 auto;
+		align-items: center;
+		list-style-type: none;
+		padding: 0;
+		a {
+			transition: opacity 0.3s;
+			display: block;
+			padding-top: 1.5em;
+			padding-bottom: 1.5em;
+			opacity: 1;
+			&:hover {
+				opacity: 0.6;
+			}
+		}
+	}
 }
 
 .nav-item.folder {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  cursor: pointer;
-  &:after {
-    content: "";
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 55px;
-    width: 0px;
-    height: 0px;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-bottom: 28px solid @blue;
-  }
-  .external,
-  .collection {
-    padding-right: 1em;
-  }
-  &:hover {
-    &:after {
-      transition: opacity 0.4s 0.2s;
-      opacity: 1;
-      visibility: visible;
-    }
-    .ag-subnav {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
+	padding-top: 30px;
+	padding-bottom: 30px;
+	cursor: pointer;
+	&:after {
+		content: '';
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.2s;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 55px;
+		width: 0px;
+		height: 0px;
+		border-left: 25px solid transparent;
+		border-right: 25px solid transparent;
+		border-bottom: 28px solid @blue;
+	}
+	.external,
+	.collection {
+		padding-right: 1em;
+	}
+	&:hover {
+		&:after {
+			transition: opacity 0.4s 0.2s;
+			opacity: 1;
+			visibility: visible;
+		}
+		.ag-subnav {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 }
 
 /* Navigation */
 #mainNavWrapper {
-  .nav-item {
-    label {
-      transition: opacity 0.3s;
-    }
-    &:hover {
-      label {
-        opacity: 0.6;
-      }
-    }
-  }
+	.collection.active {
+		a {
+			opacity: 1;
+		}
+	}
+	.nav-item {
+		label {
+			transition: opacity 0.3s;
+		}
+		&:hover {
+			label {
+				opacity: 0.6;
+			}
+		}
+	}
 }
 
 .mobile-menu-open {
-  .mobile-bar-wrapper {
-    background: none !important;
-    box-shadow: 0px 0px 0px rgba(10, 10, 10, 0);
-  }
+	.mobile-bar-wrapper {
+		background: none !important;
+		box-shadow: 0px 0px 0px rgba(10, 10, 10, 0);
+	}
 }
 .mobile-bar-wrapper {
-  box-shadow: 0px 4px 10px rgba(10, 10, 10, 0.2);
+	box-shadow: 0px 4px 10px rgba(10, 10, 10, 0.2);
 }
 #secondaryNavWrapper {
-  .Cart {
-    display: none;
-    font-size: 1em;
-    stroke-width: 16 !important;
-  }
+	.Cart {
+		display: none;
+		font-size: 1em;
+		stroke-width: 16 !important;
+	}
 }
 .overlay-nav-container {
-  z-index: 9990;
+	z-index: 9990;
 }
 
 .mobile-menu-open {
-  .mobile-branding-wrapper {
-    opacity: 0;
-    z-index: -34 !important;
-  }
+	.mobile-branding-wrapper {
+		opacity: 0;
+		z-index: -34 !important;
+	}
 }
 
 .mobile-nav-toggle-label {
-  z-index: 9999999996;
-  padding: 10px 21px;
+	z-index: 9999999996;
+	padding: 10px 21px;
 }
 
 #secondaryNavWrapper {
-  align-items: center;
-  .sqs-svg-icon--list a {
-    height: 28px;
-    width: 28px;
-  }
+	align-items: center;
+	.sqs-svg-icon--list a {
+		height: 28px;
+		width: 28px;
+	}
 }
