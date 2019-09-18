@@ -4,10 +4,9 @@
     "description": "",
     "main": "main.js",
     "scripts": {
-        "test": "mocha",
         "start": "webpack --progress --colors --watch --open --config ./config/webpack/webpack.dev.js",
         "watch": "./node_modules/.bin/webpack -d --watch --colors",
-        "build": "webpack -p --config ./config/webpack/webpack.prod.js&&yarn run docs",
+        "build": "webpack --mode 'production' --config ./config/webpack/webpack.prod.js && npm run docs",
         "dev": "webpack-dev-server --hot --watch --colors --open --config ./config/webpack/webpack.dev.js",
         "sqs": "squarespace-server https://aquaglide.squarespace.com --auth -d ../template",
         "docs": "documentation build --output ./README.md --format md"
@@ -48,10 +47,12 @@
         "less": "^3.7.1",
         "less-loader": "^5.0.0",
         "mini-css-extract-plugin": "^0.8.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
         "path": "^0.12.7",
         "postcss-loader": "^3.0.0",
         "postcss-smart-import": "^0.7.6",
         "style-loader": "^1.0.0",
+        "terser-webpack-plugin": "^2.1.0",
         "uglifyjs-webpack-plugin": "^2.2.0",
         "webpack": "^4.16.1",
         "webpack-cli": "^3.0.8",
@@ -61,6 +62,6 @@
     "dependencies": {
         "axios": "^0.19.0",
         "load-script": "^1.0.0",
-        "tiny-slider": "^2.8.2"
+        "tiny-slider": "^2.9.2"
     }
 }

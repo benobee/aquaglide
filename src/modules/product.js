@@ -1,5 +1,5 @@
 import LightboxCarousel from "./lightboxCarousel";
-import { tns } from "tiny-slider";
+import { tns } from "tiny-slider/src/tiny-slider.module.js";
 import quivers from "./quivers";
 import { CALIFORNIA_LONG, UNITED_STATES_SHORT } from "../common/constants";
 

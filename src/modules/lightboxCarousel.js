@@ -1,4 +1,4 @@
-import { tns } from "tiny-slider";
+import { tns } from "tiny-slider/src/tiny-slider.module.js";
 
 /**
  * Carousel component

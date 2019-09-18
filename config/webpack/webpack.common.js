@@ -32,7 +32,6 @@ module.exports = merge(rules, {
             Promise: "es6-promise",
             fetch: "imports?this=>global!exports?global.fetch!whatwg-fetch"
         })
-        //new HtmlWebpackPlugin()
     ],
     output: {
         publicPath: "/",
