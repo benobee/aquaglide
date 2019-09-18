@@ -5,7 +5,7 @@ module.exports = {
         rules: [
             // @rule: JS
             {
-                enforce: 'pre',
+                enforce: "pre",
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: [
@@ -16,29 +16,27 @@ module.exports = {
                             emitWarning: true,
                             fix: true
                         }
-                    },
+                    }
                 ]
             },
             // @rule: LESS
             {
                 test: /\.less$/,
                 use: [
-                    'style-loader',
+                    "style-loader",
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    "css-loader",
                     {
-                        loader: 'postcss-loader',
-                        options: { config: { path: 'postcss.config.js' } },
+                        loader: "postcss-loader",
+                        options: { config: { path: "postcss.config.js" } }
                     },
-                    'less-loader',
+                    "less-loader"
                 ]
             },
             // @rule: CSS
             {
                 test: /\.css$/,
-                use: [
-                    'postcss-loader'
-                ]
+                use: ["postcss-loader"]
             },
             // @rule: JSON
             {
@@ -47,4 +45,4 @@ module.exports = {
             }
         ]
     }
-}
+};

@@ -1,5 +1,13 @@
 import axios from "axios";
 import PubSub from "../core/pubsub";
+import {
+    US_MARKETPLACE_ID,
+    IPINFO_TOKEN,
+    IPINFO_API,
+    IPINFO_ERROR_MESSAGE,
+    UNITED_STATES_SHORT
+} from "../common/constants";
+import { PRODUCT_NOT_FOUND, MARKETPLACE_PROCESSED } from "../common/pubSubEvents";
 
 /**
  * @public
@@ -25,12 +33,12 @@ const quivers = {
             const productPage = document.querySelector(".Product");
 
             if (productPage) {
-                events.emit("productPageFound", data);
+                events.emit(PRODUCT_NOT_FOUND, data);
             }
         });
     },
     getGEOData (callback) {
-        events.on("productPageFound", (data) => {
+        events.on(PRODUCT_NOT_FOUND, (data) => {
             callback(data, data.error);
         });
     },
@@ -49,42 +57,42 @@ const quivers = {
      *	using geo plugin script in HEAD
      */
     geoQuery () {
-        const request = axios.get("https://ipinfo.io/json", {
+        const request = axios.get(IPINFO_API, {
             headers: {
                 "Cache-Control": "no-cache, no-store, must-revalidate"
             },
             params: {
-                token: "d3cd176decd4e9"
+                token: IPINFO_TOKEN
             }
         });
 
-        request.then((response) => {
-            let marketplace = "";
+        request
+            .then((response) => {
+                let marketplace = "";
 
-            switch (response.data.country) {
-                case "US":
-                    marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6";
-                    break;
-                // case "CA": marketplace = "d011d2c7-0e0d-4905-9f47-57cc0cd923b6"; break;
-                default:
-                    marketplace = "";
-            }
+                switch (response.data.country) {
+                    case UNITED_STATES_SHORT:
+                        marketplace = US_MARKETPLACE_ID;
+                        break;
+                    default:
+                        marketplace = "";
+                }
 
-            if (marketplace.length > 0) {
-                events.emit("marketplaceProcessed", {
-                    marketplace,
-                    country: response.data.country,
-                    error: null,
-                    state: response.data.region
-                });
-            } else {
-                events.emit("marketplaceProcessed", {
-                    marketplace: null,
-                    country: response.data.country,
-                    error: "ERROR: No Marketplace Found or location not approved."
-                });
-            }
-        })
+                if (marketplace.length > 0) {
+                    events.emit(MARKETPLACE_PROCESSED, {
+                        marketplace,
+                        country: response.data.country,
+                        error: null,
+                        state: response.data.region
+                    });
+                } else {
+                    events.emit(MARKETPLACE_PROCESSED, {
+                        marketplace: null,
+                        country: response.data.country,
+                        error: IPINFO_ERROR_MESSAGE
+                    });
+                }
+            })
             .catch((error) => {
                 console.log(error);
             });

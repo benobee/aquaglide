@@ -1,9 +1,4 @@
 {
-    "presets": [
-        "env"
-    ],
-    "plugins": [
-        "transform-object-assign",
-        "syntax-dynamic-import"
-    ]
+    "presets": ["@babel/preset-env"],
+    "plugins": ["transform-object-assign", "syntax-dynamic-import"]
 }

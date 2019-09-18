@@ -16,7 +16,7 @@ class Element {
     on (type, callback) {
         if (this.isNodeList) {
             for (const i in this.root) {
-                if ((typeof this.root[ i ] === "object") && this.root[ i ]) {
+                if (typeof this.root[ i ] === "object" && this.root[ i ]) {
                     this.root[ i ].addEventListener(type, (e) => {
                         callback(e);
                     });
@@ -51,6 +51,4 @@ const dom = (query) => {
     return el;
 };
 
-export {
-    dom
-};
+export { dom };
