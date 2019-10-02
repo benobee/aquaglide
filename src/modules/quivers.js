@@ -73,10 +73,10 @@ const quivers = {
                 let marketplace = "";
 
                 switch (response.data.country) {
-                    case UNITED_STATES_SHORT | "USA":
+                    case UNITED_STATES_SHORT || "USA":
                         marketplace = US_MARKETPLACE_ID;
                         break;
-                    case AUSTRALIA_SHORT | "AUS":
+                    case AUSTRALIA_SHORT || "AUS":
                         marketplace = AUS_MARKETPLACE_ID;
                         break;
                     default:
