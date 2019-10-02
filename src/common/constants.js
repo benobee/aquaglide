@@ -4,4 +4,5 @@ export const IPINFO_TOKEN = "d3cd176decd4e9";
 export const IPINFO_API = "https://ipinfo.io/json";
 export const IPINFO_ERROR_MESSAGE = "ERROR: No Marketplace Found or location not approved.";
 export const UNITED_STATES_SHORT = "US";
+export const AUSTRALIA_SHORT = "AU";
 export const CALIFORNIA_LONG = "California";
