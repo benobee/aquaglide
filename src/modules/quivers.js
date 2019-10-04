@@ -5,9 +5,9 @@ import {
     IPINFO_TOKEN,
     IPINFO_API,
     IPINFO_ERROR_MESSAGE,
-    UNITED_STATES_SHORT,
-    AUSTRALIA_SHORT,
-    AUS_MARKETPLACE_ID
+    UNITED_STATES_SHORT
+    // AUSTRALIA_SHORT,
+    // AUS_MARKETPLACE_ID
 } from "../common/constants";
 import { PRODUCT_NOT_FOUND, MARKETPLACE_PROCESSED } from "../common/pubSubEvents";
 
@@ -25,7 +25,7 @@ const quivers = {
         this.events();
     },
     events () {
-        events.on("marketplaceProcessed", (data) => {
+        events.on(MARKETPLACE_PROCESSED, (data) => {
             this.data = data;
             if (data.marketplace) {
                 document.querySelector("body").classList.add("marketplace-active");
@@ -70,32 +70,34 @@ const quivers = {
 
         request
             .then((response) => {
-                let marketplace = "";
+                let marketplace = null;
 
-                switch (response.data.country) {
-                    case UNITED_STATES_SHORT || "USA":
-                        marketplace = US_MARKETPLACE_ID;
-                        break;
-                    case AUSTRALIA_SHORT || "AUS":
-                        marketplace = AUS_MARKETPLACE_ID;
-                        break;
-                    default:
-                        marketplace = "";
-                }
+                if (response && Boolean(response.data) && Boolean(response.data.country)) {
+                    switch (response.data.country) {
+                        case UNITED_STATES_SHORT:
+                            marketplace = US_MARKETPLACE_ID;
+                            break;
+                        // case AUSTRALIA_SHORT:
+                        //     marketplace = AUS_MARKETPLACE_ID;
+                        //     break;
+                        default:
+                            marketplace = null;
+                    }
 
-                if (marketplace.length > 0) {
-                    events.emit(MARKETPLACE_PROCESSED, {
-                        marketplace,
-                        country: response.data.country,
-                        error: null,
-                        state: response.data.region
-                    });
-                } else {
-                    events.emit(MARKETPLACE_PROCESSED, {
-                        marketplace: null,
-                        country: response.data.country,
-                        error: IPINFO_ERROR_MESSAGE
-                    });
+                    if (marketplace) {
+                        events.emit(MARKETPLACE_PROCESSED, {
+                            marketplace,
+                            country: response.data.country,
+                            error: null,
+                            state: response.data.region
+                        });
+                    } else {
+                        events.emit(MARKETPLACE_PROCESSED, {
+                            marketplace,
+                            country: response.data.country,
+                            error: IPINFO_ERROR_MESSAGE
+                        });
+                    }
                 }
             })
             .catch((error) => {
