@@ -5,9 +5,9 @@ import {
     IPINFO_TOKEN,
     IPINFO_API,
     IPINFO_ERROR_MESSAGE,
-    UNITED_STATES_SHORT
-    // AUSTRALIA_SHORT,
-    // AUS_MARKETPLACE_ID
+    UNITED_STATES_SHORT,
+    AUSTRALIA_SHORT,
+    AUS_MARKETPLACE_ID
 } from "../common/constants";
 import { PRODUCT_NOT_FOUND, MARKETPLACE_PROCESSED } from "../common/pubSubEvents";
 
@@ -77,9 +77,9 @@ const quivers = {
                         case UNITED_STATES_SHORT:
                             marketplace = US_MARKETPLACE_ID;
                             break;
-                        // case AUSTRALIA_SHORT:
-                        //     marketplace = AUS_MARKETPLACE_ID;
-                        //     break;
+                        case AUSTRALIA_SHORT:
+                            marketplace = AUS_MARKETPLACE_ID;
+                            break;
                         default:
                             marketplace = null;
                     }
